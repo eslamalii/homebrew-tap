@@ -1,0 +1,36 @@
+# Homebrew formula for Pix: https://github.com/eslamalii/pix
+class Pix < Formula
+  desc "Tiny pixel robot that lives on your MacBook Pro's Touch Bar"
+  homepage "https://github.com/eslamalii/pix"
+  url "https://github.com/eslamalii/pix/archive/refs/tags/v1.0.0.tar.gz"
+  sha256 "3ff0af7d2e76282ae0e5724014d1fc2bc3ddd4a229469ff3611e88cbffbce90c"
+  license :cannot_represent # MIT code, all-rights-reserved character: see LICENSE
+
+  depends_on macos: :sonoma
+
+  # Built from source on your Mac, so macOS doesn't quarantine it: no Gatekeeper prompt, on Intel or Apple Silicon.
+  def install
+    ENV["PIX_BUILD"] = "1"
+    system "./scripts/build-app.sh", "--bundle"
+    prefix.install "build/Pix.app"
+  end
+
+  def caveats
+    <<~EOS
+      Start Pix:
+        open #{opt_prefix}/Pix.app
+
+      After that it starts at login by itself; turn that off from Pix's menu-bar icon.
+      To find it in Spotlight and Launchpad too:
+        ln -sf #{opt_prefix}/Pix.app ~/Applications/Pix.app
+
+      After `brew upgrade pix`, choose Quit Pix from its menu-bar icon and open it again,
+      so the new version runs and starts at login.
+      Before `brew uninstall pix`, turn off Start at Login in Pix's menu-bar icon, then choose Quit Pix.
+    EOS
+  end
+
+  test do
+    assert_predicate prefix/"Pix.app/Contents/MacOS/Pix", :executable?
+  end
+end
