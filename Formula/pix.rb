@@ -1,8 +1,8 @@
 # Homebrew formula for Pix: https://github.com/eslamalii/pix
 class Pix < Formula
   desc "Tiny pixel robot that lives on your MacBook Pro's Touch Bar"
-  homepage "https://github.com/eslamalii/pix"
-  url "https://github.com/eslamalii/pix/archive/refs/tags/v1.0.0.tar.gz"
+  homepage "https://meetpix.app"
+  url "https://github.com/eslamalii/pix/archive/refs/tags/v1.1.0.tar.gz"
   sha256 "a0a1e6a2b8baeb9530ce27f29c917cf07ed4054b1de81c57570fb6a8275cdd01"
   license :cannot_represent # MIT code, all-rights-reserved character: see LICENSE
 
@@ -10,7 +10,7 @@ class Pix < Formula
 
   # Built from source on your Mac, so macOS doesn't quarantine it: no Gatekeeper prompt, on Intel or Apple Silicon.
   def install
-    ENV["PIX_BUILD"] = "1"
+    ENV["PIX_BUILD"] = "9"
     system "./scripts/build-app.sh", "--bundle"
     prefix.install "build/Pix.app"
   end
