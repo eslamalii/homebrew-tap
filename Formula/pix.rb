@@ -3,7 +3,7 @@ class Pix < Formula
   desc "Tiny pixel robot that lives on your MacBook Pro's Touch Bar"
   homepage "https://meetpix.app"
   url "https://github.com/eslamalii/pix/archive/refs/tags/v1.1.2.tar.gz"
-  sha256 "442ac2c4cb987ad5d7259fc87e6e2d3a97a328fe817175742cad68e506f16523"
+  sha256 "09c8cbb20c8aa77a0730f48bf1123689cb47dc44f10d341a904b774d86fb6cc4"
   license :cannot_represent # MIT code, all-rights-reserved character: see LICENSE
 
   depends_on macos: :sonoma
