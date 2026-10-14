@@ -10,7 +10,7 @@ class Pix < Formula
 
   # Built from source on your Mac, so macOS doesn't quarantine it: no Gatekeeper prompt, on Intel or Apple Silicon.
   def install
-    ENV["PIX_BUILD"] = "29"
+    ENV["PIX_BUILD"] = "42"
     system "./scripts/build-app.sh", "--bundle"
     prefix.install "build/Pix.app"
   end
