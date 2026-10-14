@@ -2,15 +2,15 @@
 class Pix < Formula
   desc "Tiny pixel robot that lives on your MacBook Pro's Touch Bar"
   homepage "https://meetpix.app"
-  url "https://github.com/eslamalii/pix/archive/refs/tags/v1.1.2.tar.gz"
-  sha256 "09c8cbb20c8aa77a0730f48bf1123689cb47dc44f10d341a904b774d86fb6cc4"
+  url "https://github.com/eslamalii/pix/archive/refs/tags/v1.1.3.tar.gz"
+  sha256 "ec3175c8dc6e963279a72dbda9424126a8624fb8bd535e6cc1a9ae0c8f2f144b"
   license :cannot_represent # MIT code, all-rights-reserved character: see LICENSE
 
   depends_on macos: :sonoma
 
   # Built from source on your Mac, so macOS doesn't quarantine it: no Gatekeeper prompt, on Intel or Apple Silicon.
   def install
-    ENV["PIX_BUILD"] = "42"
+    ENV["PIX_BUILD"] = "46"
     system "./scripts/build-app.sh", "--bundle"
     prefix.install "build/Pix.app"
   end
